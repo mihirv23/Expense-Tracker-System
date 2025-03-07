@@ -1,93 +1,80 @@
-Expense Tracking System
+# Expense Tracking System
 
-Overview
+## Overview
 
-The Expense Tracking System is a menu-driven application designed to track family expenses efficiently. It allows users to add, update, and delete expenses while maintaining a structured record of individuals, families, and their financial transactions. The system is implemented using linked lists with double pointers for efficient management of dynamic memory.
+The **Expense Tracking System** is a menu-driven application designed to track family expenses efficiently. It allows users to **add, update, and delete expenses** while maintaining a structured record of **individuals, families, and their financial transactions**. 
 
-Features
+The system is implemented using **linked lists** with **double pointers** for efficient management of dynamic memory.
 
-User Management: Add users with unique User IDs, names, and income details.
+## Features
 
-Expense Tracking: Record expenses categorized into Rent, Utility, Grocery, Stationary, and Leisure.
+- **User Management**: Add users with unique IDs, names, and income details.
+- **Expense Tracking**: Categorize expenses into Rent, Utilities, Groceries, Stationary, and Leisure.
+- **Family Structure**: Users belong to families (1–4 members), and family expenses are automatically calculated.
+- **Sorting & Organization**: Expenses are stored in a sorted manner based on User ID and Expense ID.
+- **Dynamic Updates**: Modify and delete individual or family details while ensuring consistency.
+- **Expense Analysis**:
+  - Get total monthly family expense and compare it with family income.
+  - View expenses by category and individual contributions.
+  - Identify the highest expense day of the month.
 
-Family Management: Group users into families (1-4 members) and track their collective financials.
+## Implementation Details
 
-Sorted Storage: Users and expenses are stored in a sorted manner based on User ID and Expense ID.
+The project is implemented using **linked lists** with **double pointers** for efficient dynamic memory allocation and management. 
 
-Expense Analysis:
+### **Data Structures Used**
+1. **Individual Node**:
+   - `User ID`
+   - `User Name`
+   - `Income`
 
-Track total expenses and compare them with family income.
+2. **Family Node**:
+   - `Family ID`
+   - `Family Name`
+   - `List of Individuals` (linked list reference)
+   - `Total Family Income`
+   - `Total Monthly Family Expense`
 
-Retrieve category-wise expense reports sorted by individual contribution.
+3. **Expense Node**:
+   - `Expense ID`
+   - `User ID` (Reference to Individual)
+   - `Expense Category` (Rent, Utility, Grocery, etc.)
+   - `Expense Amount`
+   - `Date of Expense`
 
-Identify the highest expense day for a family.
+## Functions Implemented
 
-Retrieve individual expense details sorted by category in descending order.
+### `void addUser(user** u1)`
+- Adds a new user and stores users **sorted by User ID**.
 
-Update and Delete Functionality: Modify or remove users, families, and expenses with automatic updates across linked records.
+### `void addExpense(expense** e1, user** u1, fam** f1)`
+- Adds an expense entry linked to a user and updates the family expense.
 
-Data Structures Used
+### `void createFamily(fam** f1, user** u1)`
+- Forms a family with a minimum of **1** and a maximum of **4** members.
+- Updates **total family expense** upon creation.
 
-The application is built using linked lists, with the following node structures:
+### `void update_or_delete_individual_Family_details(fam** f1, user** u1)`
+- Updates individual or family details.
+- If an individual is deleted and is the **only member**, the family is automatically deleted.
 
-1. Individual Node
+### `void update_delete_expense(expense** e1, user** u1, fam** f1)`
+- Modifies or removes an expense while ensuring **data consistency**.
 
-User ID (unique identifier)
+### `void get_total_expense(fam* f1)`
+- Calculates the **total family expense** and compares it to **family income**.
 
-User Name
+### `void get_categorical_expense(fam* f1, string category)`
+- Displays **category-wise family expenses** along with **individual contributions**.
 
-Income
+### `void get_highest_expense_day(expense* e1)`
+- Finds the **day with the highest expenses** in the month.
 
-2. Family Node
+### `void get_individual_expense(user* u1, int userID)`
+- Prints the **total individual expense** for the month, sorted by category.
 
-Family ID
+## How to Run the Program
 
-Family Name
-
-List of individuals (linked to Individual Node)
-
-Total Family Income (sum of all individual incomes)
-
-Total Monthly Family Expense (sum of all members' expenses)
-
-3. Expense Node
-
-Expense ID (unique identifier)
-
-User ID (linked to Individual Node)
-
-Expense Category (Rent, Utility, Grocery, Stationary, Leisure)
-
-Expense Amount
-
-Date of Expense
-
-Functions Implemented
-
-AddUser() - Adds a new user and maintains a sorted list based on User ID.
-
-AddExpense() - Records an expense, maintaining sorted expenses under each user.
-
-CreateFamily() - Assigns users to families and updates collective financials.
-
-Update_or_delete_individual_Family_details() - Modifies or removes users and families, ensuring consistency.
-
-Update_delete_expense() - Modifies or removes an expense, updating all affected records.
-
-Get_total_expense() - Calculates and displays total family expense, checking if it exceeds income.
-
-Get_categorical_expense(category) - Shows category-wise expenses and individual contributions.
-
-Get_highest_expense_day() - Identifies the day with the highest family expense.
-
-Get_individual_expense(UserID) - Displays total and category-wise expenses for a user in descending order.
-
-Implementation Highlights
-
-Menu-Driven System: Users interact through a menu-based interface.
-
-Use of Double Pointers: Enhances efficient memory management and sorting operations.
-
-Dynamic Updates: Modifications to users and expenses reflect instantly across related records.
-
-Efficient Searching: Family and user records are searched using an O(n²) approach to maintain integrity
+1. Compile the program using a C compiler (e.g., GCC):
+   ```sh
+   gcc expense_tracker.c -o expense_tracker
