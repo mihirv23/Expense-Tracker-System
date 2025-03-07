@@ -75,6 +75,27 @@ The project is implemented using **linked lists** with **double pointers** for e
 
 ## How to Run the Program
 
-1. Compile the program using a C compiler (e.g., GCC):
+1. Compile the program using a C compiler (e.g., GCC) and run the executable:  
    ```sh
    gcc expense_tracker.c -o expense_tracker
+   ./expense_tracker
+
+
+
+## Use the Menu-Driven Interface
+
+Once the program starts, follow the on-screen **menu options** to:  
+
+- ✅ **Add users and expenses**  
+- ✅ **Create and modify families**  
+- ✅ **View categorized reports and analytics**  
+- ✅ **Delete or update details when required**  
+
+## 🚀 Future Enhancements
+
+- 🔹 **Graphical User Interface (GUI):** Implement a Tkinter (Python) or Web Dashboard  
+- 🔹 **Database Integration:** Store data persistently using MySQL or SQLite  
+- 🔹 **Expense Trends & Reports:** Generate monthly spending analysis with charts  
+- 🔹 **Export & Import Data:** Allow users to save and load expense data from files  
+- 🔹 **User Authentication:** Implement login system for different users  
+
